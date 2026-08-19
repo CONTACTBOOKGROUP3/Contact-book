@@ -158,8 +158,9 @@ function validateContact(name, phone, email) {
     isValid = false;
   }
 
-  const phonePattern = /^[0-9+\s-]{7,15}$/;
-  if (!phonePattern.test(phone.trim())) {
+    const phonePattern = /^[0-9+\s-]{7,15}$/;
+  const digitCount = (phone.match(/[0-9]/g) || []).length;
+  if (!phonePattern.test(phone.trim()) || digitCount < 7) {
     phoneError.textContent = 'Enter a valid phone number.';
     isValid = false;
   }
